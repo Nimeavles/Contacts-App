@@ -1,0 +1,47 @@
+.masthead{
+    height: 100vh;
+    background: url('../img/bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.not-sign > h5{
+    color: red;
+    font-style: italic;
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+    color: aliceblue;
+}
+
+.contact-icon {
+    height: 100%;
+    margin-right: 10px;
+}
+
+.main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.main > div > h2 {
+    font-weight: bold;
+}
+
+.text-intro{
+    font-style: italic;
+    color: black;
+    font-size: 15px;
+}
+
+.button-over:hover{
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 16px;
+    background: #555555;
+    border: none;
+    border-radius: 5px;
+}
