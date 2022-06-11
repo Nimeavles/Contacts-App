@@ -1,12 +1,16 @@
 const pool = require('../config/database');
 const bcrypt = require('bcrypt');
 
-async function LogIn(res, email, password) {
+async function LogIn(res, req, email, password) {
     try {
-        const [query] = await pool.query('SELECT * FROM `user` WHERE email = ?', [email])
-        bcrypt.compare(password, query[0].password, function(err, result) {
-            result ? res.send('login') : res.json({'error': 'error'});
-        });
+        return new Promise( async(resolve, reject) => {
+            const [query] = await pool.query('SELECT * FROM `user` WHERE email = ?', [email]);
+            if (query.length > 0) resolve(query);
+            else {
+                reject('Something was bad');
+            };
+        })
+
     }
     catch (error) {
         console.log(error);

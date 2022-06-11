@@ -1,7 +1,6 @@
 const SignUp = require('../models/Signup.model');
 const bcrypt = require('bcrypt');
 const LogIn = require('../models/Login.model');
-const res = require('express/lib/response');
 
 class Auth {
 
@@ -29,7 +28,7 @@ class Auth {
     }
 
     async Login() {
-        await LogIn(this.res, this.email, this.password);
+        return LogIn(this.res, this.req, this.email, this.password);
     }
 }
 

@@ -1,17 +1,29 @@
 //Import the framework
 const express = require('express');
-
 //Import Path for set public route
 const path = require('path');
 
 //Import Body-Parser
 const parser = require('body-parser');
 
+//Import Session
+const session = require('express-session');
+
 //Instace the framework
 const app = express();
 
 //Set the view engine to ejs
 app.set('view engine', 'ejs');
+
+//Enable the session
+const lifeCicle = 1000 * 60 * 60 * 24;
+
+app.use(session({
+    secret: "Nimeavles#2652033",
+    saveUninitialized:true,
+    cookie: { maxAge: lifeCicle },
+    resave: false,
+}));
 
 //Enable the body parser
 app.use(
