@@ -45,4 +45,4 @@ app.use(require('./routes/contacts.routes'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Run the server
-app.listen(3000, '0.0.0.0', () => console.log('App listening on port 3000'))
+app.listen(process.env.PORT || 3000, () => console.log('App listening on port 3000'))

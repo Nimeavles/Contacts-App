@@ -5,14 +5,11 @@ const {getContacts, addContact} = require('../controllers/Contacts.controller');
 routes.get('/contacts', isLoggedin, (req, res, next) => {
     let session = req.session.user;
     getContacts(session.id)
-        .then(query => {
-            res.render(`${__dirname}/../views/contacts`, data = {
-                query,
-                sample_data: 4
+        .then(([{contact_name, user_id}]) => {
+            res.render(`${__dirname}/../views/contacts`, {
+                name: contact_name,
+                id: user_id
             })
-            return {
-                query
-            }
         })
 
 });

@@ -2,4 +2,8 @@
 
     <body>
         <%- include('./partials/navbar'); %>
+        <% if (name) { %>
+            <p><%- name %> </p>
+            <p><%- id %> </p>
+        <% } %>
     </body>
