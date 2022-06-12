@@ -1,19 +1,19 @@
 const pool = require('../config/database');
 
-async function Signup(res, password, email, name) {
+async function Signup(password, email, name) {
     try {
-        const query = await pool.query('INSERT INTO `user` (name, password, email) VALUES (?, ?, ?);', [name, password, email]);
-        if (query.length >= 1) {
-            res.status(200).json({
-                status: "Correct Signup"
-            })
-        }
-        console.log(query);
-    } catch (err) {
-        console.log(err.message);
-        res.status(304).json({
-            error: 'Something were bad'
+        return new Promise(async (resolve, reject) => {
+            await pool.query('INSERT INTO `user` (name, password, email) VALUES (?, ?, ?);', [name, password, email]);
+            const [query] = await pool.query('SELECT * FROM `user` WHERE email = ?', [email]);
+            if(query.length >= 1){
+                resolve(query);
+            }else{
+                reject('Something was Bad')
+            }
         })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 }
 

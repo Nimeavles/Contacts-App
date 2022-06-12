@@ -13,18 +13,20 @@ class Auth {
     }
 
     SignUp() {
-        if (/^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail|nsdelvalle)\.(?:|com|es|net)+$/.test(this.email)
-            && this.password.length >= 8
-            && this.name !== '' || this.name === undefined
-            && this.password !== '' || this.password === undefined
-            && this.password.length >= 8) {
-            //Hash the password
-            bcrypt.genSalt(this.saltRounds, (err, salt) => {
-                bcrypt.hash(this.password, salt, (err, hash) => {
-                    SignUp(this.res, hash, this.email, this.name);
-                });
-            });
-        }
+        return new Promise((resolve, reject) => {
+            if (/^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail|nsdelvalle)\.(?:|com|es|net)+$/.test(this.email)
+                && this.password.length >= 8
+                && this.name !== '' || this.name === undefined
+                && this.password !== '' || this.password === undefined
+                && this.password.length >= 8) {
+                bcrypt.genSalt(this.saltRounds, (err, salt) => {
+                    bcrypt.hash(this.password, salt, (err, hash) => {
+                        resolve(SignUp(hash, this.email, this.name));
+                    });
+                })
+            }
+        })
+
     }
 
     async Login() {

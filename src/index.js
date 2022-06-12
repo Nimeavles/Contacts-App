@@ -38,6 +38,8 @@ app.use(parser.json());
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/login.routes'));
 app.use(require('./routes/signup.routes'));
+app.use(require('./routes/logout.routes'));
+app.use(require('./routes/contacts.routes'));
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));

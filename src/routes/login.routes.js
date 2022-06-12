@@ -11,10 +11,8 @@ routes.post('/login', (req, res)  => {
     .then(queryDb => {
         bcrypt.compare(req.body.password, queryDb[0].password, (err, result) => {
             if (result) {
-                req.session.userId = queryDb[0].id;
-                res.status(200).json({
-                    login: 'ok'
-                })
+                req.session.user = queryDb[0];
+                res.redirect('/contacts');
             }else{
                 res.status(304).json({
                     login: 'failed'

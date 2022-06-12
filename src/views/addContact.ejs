@@ -1,0 +1,25 @@
+<%- include('./partials/head'); %>
+
+    <body>
+        <%- include('./partials/navbar'); %>
+            <main class="main">
+                <form method="POST" action="/contacts/add" class="container d-flex flex-column add-form mt-5">
+                    <div class="form-group">
+                        <label for="contact_name">Contact Name</label>
+                        <input type="text" class="form-control" name="contact_name"
+                            placeholder="Jhon Die">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_phone">Contact Phone Number</label>
+                        <input type="number" class="form-control" name="contact_phone" placeholder="957 354 875" />
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_description">Contact Description</label>
+                        <textarea class="form-control" name="contact_description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="submit" class="btn btn-secondary">Add Contact</button>
+                    </div>
+                </form>
+            </main>
+    </body>
