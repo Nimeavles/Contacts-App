@@ -1,9 +1,45 @@
 <%- include('./partials/head'); %>
 
-    <body>
+    <body class="contacts-body">
         <%- include('./partials/navbar'); %>
-        <% if (name) { %>
-            <p><%- name %> </p>
-            <p><%- id %> </p>
-        <% } %>
+            <% if (contacts.length>= 1) { %>
+                <main class="main-contacts">
+                    <% contacts.forEach(element=> { %>
+                        <div class="grid-column">
+                            <div class="contact bg-secondary pt-3">
+                                <strong class="contact-title">
+                                    <h4>
+                                        <%- element.contact_name %>
+                                    </h4>
+                                </strong>
+                                <p class="contact-phone">
+                                    <%- element.contact_phone %>
+                                </p>
+                                <p class="contact-description">
+                                    <%- element.contact_description %>
+                                </p>
+                                <div class="d-flex flex-column form">
+                                    <form method="POST" action="/contacts/edit">
+                                        <button class="btn btn-primary" type="submit">Edit Contact</button>
+                                    </form>
+                                </div>
+                                <div class="d-flex form">
+                                    <form method="GET" action="/contacts/delete">
+                                        <button class="btn btn-danger" type="submit">Delete Contact</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </main>
+                <% } else { %>
+                   <main class="main">
+                       <div class="container mt-5">
+                           <h1 class="contact-title text-center">You haven't got any contact yet.</h1>
+                           <div class="text-center mt-4">
+                                <a href="/contacts/add"><button class="btn btn-primary">Create your first contact</button></a>
+                           </div>
+                       </div>
+                   </main>
+                <% } %>
     </body>

@@ -11,7 +11,7 @@ function getContactsDb(user_id) {
     })
 }
 
-async function addContactDb(res, user_id, contact_name, contact_phone, contact_description = null) {
+async function addContactDb(res, user_id, contact_name, contact_description = null, contact_phone) {
     try {
         await pool.query("INSERT INTO `contacts` (user_id, contact_name, contact_description, contact_phone) VALUES (?, ?, ?, ?);", [user_id, contact_name, contact_phone, contact_description]);
         res.redirect('/contacts');
