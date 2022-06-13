@@ -20,7 +20,16 @@ async function addContactDb(res, user_id, contact_name, contact_description = nu
     }
 }
 
+async function deleteContactDb(contact_id, user_id) {
+    try {
+        await pool.query("DELETE FROM `contacts` WHERE id = (?) AND user_id = (?);", [contact_id, user_id]);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 module.exports = {
     getContactsDb,
-    addContactDb
+    addContactDb,
+    deleteContactDb
 };

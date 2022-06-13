@@ -1,0 +1,14 @@
+<%- include('./partials/head'); %>
+
+    <body>
+        <%- include('./partials/logged_navbar'); %>
+        <main class="main">
+            <div class="container bg-secondary welcome">
+                <h1 class="contact-title text-center">Welcome <%- req.session.user.name %> </h1>
+                <div class="actions d-flex justify-content-around mb-3">
+                    <a href="/contacts"><button class="btn btn-primary">See my contacts</button></a>
+                    <a href="/contacts/add"><button class="btn btn-primary">Add new contact</button></a>
+                </div>
+            </div>
+        </main>
+    </body>

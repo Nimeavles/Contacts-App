@@ -1,7 +1,7 @@
 <%- include('./partials/head'); %>
 
     <body class="contacts-body">
-        <%- include('./partials/navbar'); %>
+        <%- include('./partials/logged_navbar'); %>
             <% if (contacts.length>= 1) { %>
                 <main class="main-contacts">
                     <% contacts.forEach(element=> { %>
@@ -24,7 +24,7 @@
                                     </form>
                                 </div>
                                 <div class="d-flex form">
-                                    <form method="GET" action="/contacts/delete">
+                                    <form method="GET" action="/contacts/delete/<%- element.id %>">
                                         <button class="btn btn-danger" type="submit">Delete Contact</button>
                                     </form>
                                 </div>

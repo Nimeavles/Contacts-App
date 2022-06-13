@@ -9,7 +9,7 @@ routes.post('/signup', (req, res) => {
     new Auth(req).SignUp(res)
     .then((query) => req.session.user = query)
     .then(() => console.log(req.session.user))
-    .then(() => res.redirect('/contacts'))
+    .then(() => res.redirect('/profile'))
     .catch(err => res.status(304).json({error: err}));
 });
 

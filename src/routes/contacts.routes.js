@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 const isLoggedin = require('../middlewares/isLoggedIn');
-const {getContacts, addContact} = require('../controllers/Contacts.controller');
+const {getContacts, addContact, deleteContact} = require('../controllers/Contacts.controller');
+const pool = require('../config/database')
 
 routes.get('/contacts', isLoggedin, (req, res, next) => {
     let session = req.session.user;
@@ -12,6 +13,17 @@ routes.get('/contacts', isLoggedin, (req, res, next) => {
         })
 
 });
+
+routes.get('/profile', isLoggedin, (req, res) => {
+    res.render(`${__dirname}/../views/profile`, {
+        req: req
+    })
+});
+
+routes.get('/contacts/delete/:id', isLoggedin, async (req, res) => {
+    deleteContact(req)
+    res.redirect('/profile') 
+})
 
 routes.get('/contacts/add', isLoggedin, (req, res) => {
     res.render(`${__dirname}/../views/addContact`);
