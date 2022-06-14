@@ -21,4 +21,3 @@ CREATE TABLE IF NOT EXISTS `contacts` (
     PRIMARY KEY (`id`),
     CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES user(id)
 );
-
