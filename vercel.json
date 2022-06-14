@@ -3,7 +3,7 @@
     "name": "Contacts-App",
     "builds": [
         {
-            "src": "src/index.js",
+            "src": "../../src/index.js",
             "use": "@vercel/node"
         }
     ],
