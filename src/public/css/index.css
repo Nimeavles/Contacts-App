@@ -48,11 +48,11 @@ a:active {
     border-radius: 5px;
 }
 
-.form{
+.form {
     margin-bottom: 10px;
 }
 
-.contact-title{
+.contact-title {
     font-weight: bold;
     font-style: italic;
     text-align: center;
@@ -66,6 +66,7 @@ a:active {
 .contact-description {
     font-size: 17px;
     color: #fff;
+    max-width: 75%;
 }
 
 @media only screen and (min-width : 901px) {
@@ -98,6 +99,9 @@ a:active {
         display: flex;
         flex-direction: column;
         width: 75%;
+        max-width: 75%;
+        text-align: center;
+        flex-wrap: wrap;
         border-radius: 5px;
         align-items: center;
     }
@@ -108,24 +112,27 @@ a:active {
         width: 75%;
     }
 
-    .main-contacts{
+    .main-contacts {
         height: 100%;
         display: grid;
         grid-template-columns: 1fr;
         margin-top: 5%;
         grid-gap: 3%;
     }
-    
-    .grid-column{
+
+    .grid-column {
         display: flex;
         justify-content: center;
     }
-    
-    .contact{
+
+    .contact {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         width: 75%;
         border-radius: 5px;
+        max-width: 75%;
+        text-align: center;
         align-items: center;
     }
 

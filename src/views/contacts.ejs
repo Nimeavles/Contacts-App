@@ -19,7 +19,7 @@
                                     <%- element.contact_description %>
                                 </p>
                                 <div class="d-flex flex-column form">
-                                    <form method="POST" action="/contacts/edit">
+                                    <form method="GET" action="/contacts/edit/<%- element.id %> ">
                                         <button class="btn btn-primary" type="submit">Edit Contact</button>
                                     </form>
                                 </div>

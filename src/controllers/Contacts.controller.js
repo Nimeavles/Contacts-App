@@ -1,11 +1,11 @@
-const {addContactDb, getContactsDb, deleteContactDb} = require('../models/Contacts.model');
+const {addContactDb, getContactsDb, deleteContactDb, updateContactDb} = require('../models/Contacts.model');
 
 function getContacts(user_id){
     return getContactsDb(user_id)
 }
 
 function addContact(res, req){
-    if(req.body.contact_name !== '' || undefined && req.body.contact_phone.length === 9) {
+    if(req.body.contact_name !== '' || undefined && req.body.contact_phone.length === 9 && req.session.user && req.params.id) {
         addContactDb(res, req.session.user.id, req.body.contact_name, req.body.contact_phone, req.body.contact_description);
     }else{
         res.json({error: 'Introduce well the fields'})
@@ -20,8 +20,17 @@ function deleteContact(req) {
     }
 }
 
+function updateContact(req) {
+    if (req.body.contact_name !== '' || undefined && req.body.contact_phone.length === 9 && req.session.user && req.params.id){
+        updateContactDb(req);
+    }else{
+        console.log('Something was bad');
+    }
+}
+
 module.exports = {
     getContacts,
     addContact,
-    deleteContact 
+    deleteContact,
+    updateContact
 };

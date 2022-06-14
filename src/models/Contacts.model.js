@@ -28,8 +28,17 @@ async function deleteContactDb(contact_id, user_id) {
     }
 }
 
+async function updateContactDb(req) {
+    try {
+        await pool.query("UPDATE `contacts` SET contact_name = (?), contact_description = (?), contact_phone = (?) WHERE id = (?) AND user_id = (?);", [req.body.contact_name, req.body.contact_description, req.body.contact_phone, req.params.id, req.session.user.id]);
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 module.exports = {
     getContactsDb,
     addContactDb,
-    deleteContactDb
+    deleteContactDb,
+    updateContactDb
 };
