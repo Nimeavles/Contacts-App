@@ -4,7 +4,8 @@ const pool = createPool({
     host: 'localhost',
     user: 'admin',
     password: 'admin',
-    database: 'Contacts_App'
+    database: 'Contacts_App',
+    port: process.env.PORT || '3306'
 });
 
 pool.getConnection((err, connection) => {
